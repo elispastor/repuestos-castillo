@@ -90,7 +90,6 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      /* ✅ AHORA SÍ: con el nombre correcto */
       background-image: url('autocastillo.jpg');
     }
 
@@ -182,6 +181,48 @@
       justify-content: center;
       gap: 0.5rem;
       border: 2px solid var(--rojo);
+    }
+
+    /* NUEVA SECCIÓN DE MARCAS (COLLAGE CON UNA SOLA IMAGEN) */
+    .marcas-section {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 30px;
+      border: 3px solid var(--rojo);
+      text-align: center;
+    }
+
+    .marcas-section h2 {
+      color: var(--rojo);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .marcas-section h2 span {
+      background: var(--amarillo);
+      color: var(--rojo);
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      margin-left: 0.5rem;
+    }
+
+    .marcas-collage {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: #f9f9f9;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .marcas-collage img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      display: block;
     }
 
     .qr-section {
@@ -366,6 +407,27 @@
       margin-top: 1rem;
     }
 
+    /* BOTÓN DIRECTO A WHATSAPP */
+    .whatsapp-directo {
+      background: #25D366;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3rem;
+      display: inline-block;
+      margin: 2rem auto 1rem;
+      border: 3px solid var(--amarillo);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: 0.3s;
+    }
+
+    .whatsapp-directo:hover {
+      background: #128C7E;
+      transform: scale(1.05);
+    }
+
     @media (max-width: 768px) {
       .hero, .filosofia, .servicios-grid, .planes-grid {
         grid-template-columns: 1fr;
@@ -413,7 +475,6 @@
 
 <main id="inicio">
   <section class="hero">
-    <!-- ✅ AHORA CON autocastillo.jpg -->
     <div class="hero-imagen"></div>
     <div class="hero-content">
       <span class="badge-taller">🏆 TALLER Y AUTOREPUESTOS</span>
@@ -439,6 +500,15 @@
     </div>
   </section>
 </main>
+
+<!-- SECCIÓN DE MARCAS (COLLAGE CON UNA SOLA IMAGEN) -->
+<section class="marcas-section">
+  <h2>Trabajamos con <span>estas y otras marcas</span></h2>
+  <div class="marcas-collage">
+    <img src="marcas-de-autos.jpg" alt="Marcas de autos con las que trabajamos">
+  </div>
+  <p style="margin-top: 1.5rem; color: #555; font-size: 1.1rem;">Y muchas más... ¡Consulte por su marca favorita!</p>
+</section>
 
 <section id="filosofia" class="filosofia">
   <div class="filosofia-item">
@@ -532,7 +602,16 @@
       </div>
     </div>
   </div>
-  <p style="text-align: center; margin-top: 2rem;">📲 Para contratar, haz clic en "Quiero mi tarjeta" en el menú</p>
+  
+  <!-- BOTÓN DIRECTO A SU WHATSAPP -->
+  <div style="text-align: center; margin: 3rem 0 1rem;">
+    <a href="https://wa.me/584227159158?text=Hola,%20vi%20la%20tarjeta%20de%20Repuestos%20Castillo%20y%20quiero%20información%20sobre%20las%20tarjetas%20digitales" 
+       class="whatsapp-directo" 
+       target="_blank">
+       📲 CONTRATAR AHORA · WHATSAPP DIRECTO
+    </a>
+    <p style="margin-top: 1rem; color: #666;">Atención personalizada por Don Elis</p>
+  </div>
 </section>
 
 <footer>
