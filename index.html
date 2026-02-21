@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repuestos Castillo · Taller y Autorepuestos</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, sans-serif;
+    }
+
+    :root {
+      --rojo: #c0392b;
+      --gris-oscuro: #2c3e50;
+      --gris-claro: #ecf0f1;
+      --amarillo: #f1c40f;
+    }
+
+    body {
+      background: #f5f5f5;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--rojo), #a8231a);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      font-size: 2rem;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: var(--amarillo);
+    }
+
+    .menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .menu li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .menu li a:hover {
+      color: var(--amarillo);
+    }
+
+    .hamburguesa {
+      display: none;
+      font-size: 2rem;
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* HERO CON LA NUEVA PORTADA */
+    .hero {
+      max-width: 1200px;
+      margin: 2rem auto;
+      background: white;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 3px solid var(--rojo);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-imagen {
+      min-height: 350px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: url('portada.jpg');
+    }
+
+    .hero-content {
+      padding: 2rem;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      color: var(--rojo);
+      line-height: 1.2;
+    }
+
+    .hero-content h1 small {
+      display: block;
+      font-size: 1.2rem;
+      color: var(--gris-oscuro);
+      font-weight: 300;
+    }
+
+    .badge-taller {
+      background: var(--amarillo);
+      color: var(--rojo);
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      display: inline-block;
+      font-weight: bold;
+      margin: 0.5rem 0;
+    }
+
+    .servicios-destacados {
+      background: #f0f0f0;
+      padding: 1rem;
+      border-radius: 15px;
+      margin: 1rem 0;
+      border-left: 6px solid var(--rojo);
+    }
+
+    .direccion {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      margin: 1rem 0;
+    }
+
+    .botones {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin: 1rem 0;
+    }
+
+    .btn-wsp {
+      background: #25D366;
+      color: white;
+      padding: 0.8rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-llamada {
+      background: var(--rojo);
+      color: white;
+      padding: 0.8rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-compartir {
+      background: var(--amarillo);
+      color: var(--rojo);
+      padding: 0.8rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border: 2px solid var(--rojo);
+    }
+
+    /* QR SECTION */
+    .qr-section {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 30px;
+      border: 3px solid var(--rojo);
+      text-align: center;
+    }
+
+    .qr-container img {
+      max-width: 200px;
+      border-radius: 20px;
+      border: 4px solid var(--amarillo);
+    }
+
+    /* FILOSOFÍA */
+    .filosofia {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .filosofia-item {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 20px;
+      text-align: center;
+      border-top: 5px solid var(--rojo);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .filosofia-item h3 {
+      color: var(--rojo);
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    /* SERVICIOS */
+    .servicios-grid {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .servicio-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 15px;
+      border-bottom: 4px solid var(--rojo);
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .servicio-card h3 {
+      color: var(--rojo);
+      margin-bottom: 1rem;
+    }
+
+    /* CONTACTO */
+    .contacto-box {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 20px;
+      border: 2px solid var(--rojo);
+      text-align: center;
+    }
+
+    .telefonos-destacados {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .telefono-item {
+      background: var(--rojo);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .servicio-domicilio {
+      background: var(--amarillo);
+      color: var(--rojo);
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      font-weight: bold;
+      display: inline-block;
+      margin: 1rem 0;
+    }
+
+    footer {
+      background: var(--gris-oscuro);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+
+    /* PÁGINA OCULTA DE PLANES */
+    #planes-page {
+      display: none;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 30px;
+      border: 3px solid var(--rojo);
+    }
+
+    #planes-page:target {
+      display: block;
+    }
+
+    .planes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .plan-card {
+      background: #f9f9f9;
+      padding: 2rem;
+      border-radius: 20px;
+      text-align: center;
+      border-bottom: 5px solid;
+    }
+
+    .plan-basico { border-bottom-color: #3498db; }
+    .plan-pro { border-bottom-color: #e67e22; }
+    .plan-elite { border-bottom-color: var(--rojo); }
+
+    .precio {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin: 1rem 0;
+    }
+
+    .comision {
+      background: var(--amarillo);
+      color: var(--rojo);
+      padding: 0.5rem;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1.3rem;
+      margin: 1rem 0;
+    }
+
+    .beneficios {
+      list-style: none;
+      text-align: left;
+    }
+
+    .beneficios li {
+      margin: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .beneficios li::before {
+      content: "✅";
+    }
+
+    .pool-badge {
+      background: var(--rojo);
+      color: white;
+      padding: 0.5rem;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero, .filosofia, .servicios-grid, .planes-grid {
+        grid-template-columns: 1fr;
+      }
+      .hamburguesa {
+        display: block;
+      }
+      .menu {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: var(--rojo);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+      }
+      .menu.mostrar {
+        display: flex;
+      }
+      .telefonos-destacados {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <div class="logo">REPUESTOS <span>CASTILLO</span></div>
+    <button class="hamburguesa" id="menuBtn">☰</button>
+    <ul class="menu" id="menu">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#filosofia">Filosofía</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#qr">QR</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <!-- Botón que lleva a la PÁGINA OCULTA (no directo a WhatsApp) -->
+      <li><a href="#planes-page" style="background: var(--amarillo); color: var(--rojo); padding: 0.5rem 1rem; border-radius: 30px;">📱 Quiero mi tarjeta</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <!-- LA NUEVA PORTADA ESPECTACULAR -->
+    <div class="hero-imagen"></div>
+    <div class="hero-content">
+      <span class="badge-taller">🏆 TALLER Y AUTOREPUESTOS</span>
+      <h1>REPUESTOS <small>CASTILLO</small></h1>
+      
+      <div class="servicios-destacados">
+        <strong>🔧 Servicio a domicilio</strong><br>
+        • Venta de repuestos para toda clase de vehículos<br>
+        • Mantenimiento preventivo y correctivo
+      </div>
+
+      <div class="direccion">
+        📍 <strong>AV. SA N° 0-50</strong><br>
+        La Merced · Cúcuta, Colombia
+      </div>
+
+      <div class="botones">
+        <a href="https://wa.me/573166227219?text=Hola%20Repuestos%20Castillo" class="btn-wsp">📱 WhatsApp 316 622 7219</a>
+        <a href="https://wa.me/573209641869?text=Hola%20Repuestos%20Castillo" class="btn-wsp">📱 WhatsApp 320 964 1869</a>
+        <a href="tel:+573166227219" class="btn-llamada">📞 Llamar ahora</a>
+        <a href="https://wa.me/?text=¡Mira%20lo%20que%20encontré!%20Repuestos%20Castillo%20👉%20https://repuestoscastillo.netlify.app" class="btn-compartir">🎁 Compartir con un amigo</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FILOSOFÍA -->
+<section id="filosofia" class="filosofia">
+  <div class="filosofia-item">
+    <h3>🔧 Misión</h3>
+    <p>Ofrecer repuestos de calidad y servicio mecánico honesto, con atención rápida y precios justos.</p>
+  </div>
+  <div class="filosofia-item">
+    <h3>🔩 Visión</h3>
+    <p>Ser el taller y repuestos de confianza para los conductores de Cúcuta y su área metropolitana.</p>
+  </div>
+  <div class="filosofia-item">
+    <h3>⚙️ Valores</h3>
+    <p>Honestidad, rapidez, garantía y servicio a domicilio.</p>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="servicios-grid">
+  <div class="servicio-card">
+    <h3>🔧 Mantenimiento</h3>
+    <p>Preventivo y correctivo para todas las marcas.</p>
+  </div>
+  <div class="servicio-card">
+    <h3>⚙️ Repuestos</h3>
+    <p>Venta de repuestos originales y alternativos.</p>
+  </div>
+  <div class="servicio-card">
+    <h3>🛞 Domicilio</h3>
+    <p>Servicio a domicilio rápido y seguro.</p>
+  </div>
+</section>
+
+<!-- QR -->
+<section id="qr" class="qr-section">
+  <div class="qr-container">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://repuestoscastillo.netlify.app" alt="Código QR">
+    <h3 style="color: var(--rojo); margin-top: 1rem;">📲 ESCANEA Y COMPARTE</h3>
+    <p>Guarda este código QR para ver la tarjeta digital al instante.</p>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="contacto-box">
+  <h2 style="color: var(--rojo);">📞 Contáctenos</h2>
+  <div class="telefonos-destacados">
+    <div class="telefono-item">📱 316 622 7219</div>
+    <div class="telefono-item">📱 320 964 1869</div>
+    <div class="telefono-item">📞 (607) 548 7859</div>
+  </div>
+  <p>📍 AV. SA N° 0-50, La Merced · Cúcuta</p>
+  <div class="servicio-domicilio">
+    🚚 SERVICIO A DOMICILIO
+  </div>
+</section>
+
+<!-- PÁGINA OCULTA DE PLANES (solo visible por el botón) -->
+<section id="planes-page">
+  <h2 style="color: var(--rojo); text-align: center;">📊 PLANES TARJETA DIGITAL</h2>
+  <div class="planes-grid">
+    
+    <!-- PLAN BÁSICO -->
+    <div class="plan-card plan-basico">
+      <h3>BÁSICO</h3>
+      <div class="precio">$25.000</div>
+      <div class="comision">20% · $5.000 x referido</div>
+      <ul class="beneficios">
+        <li>Tarjeta digital profesional</li>
+        <li>Botón WhatsApp</li>
+        <li>Misión/Visión/Valores</li>
+        <li>Menú de servicios</li>
+      </ul>
+    </div>
+
+    <!-- PLAN PRO -->
+    <div class="plan-card plan-pro">
+      <h3>PRO</h3>
+      <div class="precio">$50.000</div>
+      <div class="comision">30% · $15.000 x referido</div>
+      <ul class="beneficios">
+        <li>Todo lo del Básico</li>
+        <li>Código QR personalizado</li>
+        <li>Botón compartir</li>
+        <li>Diseño mejorado</li>
+      </ul>
+    </div>
+
+    <!-- PLAN ÉLITE -->
+    <div class="plan-card plan-elite">
+      <h3>ÉLITE</h3>
+      <div class="precio">$100.000</div>
+      <div class="comision">40% · $40.000 x referido</div>
+      <ul class="beneficios">
+        <li>Todo lo del Pro</li>
+        <li>Posicionamiento SEO</li>
+        <li>Participación en POOL anual</li>
+      </ul>
+      <div class="pool-badge">
+        🏆 POOL ANUAL: 10% de todas las ventas repartido entre ÉLITES
+      </div>
+    </div>
+  </div>
+  <p style="text-align: center; margin-top: 2rem;">📲 Para contratar, haz clic en "Quiero mi tarjeta" en el menú</p>
+</section>
+
+<footer>
+  <p>&copy; 2026 Repuestos Castillo · Todos los derechos reservados</p>
+  <p>📍 AV. SA N° 0-50, La Merced · Cúcuta</p>
+  <p>📱 316 622 7219 · 320 964 1869 · 📞 (607) 548 7859</p>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const menu = document.getElementById('menu');
+  menuBtn.addEventListener('click', () => menu.classList.toggle('mostrar'));
+</script>
+
+</body>
+</html>
