@@ -74,7 +74,6 @@
       cursor: pointer;
     }
 
-    /* HERO CON LA NUEVA PORTADA */
     .hero {
       max-width: 1200px;
       margin: 2rem auto;
@@ -91,6 +90,7 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      /* ✅ AHORA SÍ: la imagen del carro de Castillo */
       background-image: url('portada.jpg');
     }
 
@@ -184,7 +184,6 @@
       border: 2px solid var(--rojo);
     }
 
-    /* QR SECTION */
     .qr-section {
       max-width: 800px;
       margin: 3rem auto;
@@ -201,7 +200,6 @@
       border: 4px solid var(--amarillo);
     }
 
-    /* FILOSOFÍA */
     .filosofia {
       max-width: 1200px;
       margin: 3rem auto;
@@ -226,7 +224,6 @@
       margin-bottom: 0.8rem;
     }
 
-    /* SERVICIOS */
     .servicios-grid {
       max-width: 1200px;
       margin: 3rem auto;
@@ -250,7 +247,6 @@
       margin-bottom: 1rem;
     }
 
-    /* CONTACTO */
     .contacto-box {
       max-width: 800px;
       margin: 3rem auto;
@@ -296,7 +292,6 @@
       margin-top: 3rem;
     }
 
-    /* PÁGINA OCULTA DE PLANES */
     #planes-page {
       display: none;
       max-width: 1200px;
@@ -411,7 +406,6 @@
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#qr">QR</a></li>
       <li><a href="#contacto">Contacto</a></li>
-      <!-- Botón que lleva a la PÁGINA OCULTA (no directo a WhatsApp) -->
       <li><a href="#planes-page" style="background: var(--amarillo); color: var(--rojo); padding: 0.5rem 1rem; border-radius: 30px;">📱 Quiero mi tarjeta</a></li>
     </ul>
   </div>
@@ -419,7 +413,7 @@
 
 <main id="inicio">
   <section class="hero">
-    <!-- LA NUEVA PORTADA ESPECTACULAR -->
+    <!-- ✅ AHORA SÍ: la imagen del carro de Castillo -->
     <div class="hero-imagen"></div>
     <div class="hero-content">
       <span class="badge-taller">🏆 TALLER Y AUTOREPUESTOS</span>
@@ -446,7 +440,6 @@
   </section>
 </main>
 
-<!-- FILOSOFÍA -->
 <section id="filosofia" class="filosofia">
   <div class="filosofia-item">
     <h3>🔧 Misión</h3>
@@ -462,7 +455,6 @@
   </div>
 </section>
 
-<!-- SERVICIOS -->
 <section id="servicios" class="servicios-grid">
   <div class="servicio-card">
     <h3>🔧 Mantenimiento</h3>
@@ -478,7 +470,6 @@
   </div>
 </section>
 
-<!-- QR -->
 <section id="qr" class="qr-section">
   <div class="qr-container">
     <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://repuestoscastillo.netlify.app" alt="Código QR">
@@ -487,7 +478,6 @@
   </div>
 </section>
 
-<!-- CONTACTO -->
 <section id="contacto" class="contacto-box">
   <h2 style="color: var(--rojo);">📞 Contáctenos</h2>
   <div class="telefonos-destacados">
@@ -501,12 +491,9 @@
   </div>
 </section>
 
-<!-- PÁGINA OCULTA DE PLANES (solo visible por el botón) -->
 <section id="planes-page">
   <h2 style="color: var(--rojo); text-align: center;">📊 PLANES TARJETA DIGITAL</h2>
   <div class="planes-grid">
-    
-    <!-- PLAN BÁSICO -->
     <div class="plan-card plan-basico">
       <h3>BÁSICO</h3>
       <div class="precio">$25.000</div>
@@ -519,7 +506,6 @@
       </ul>
     </div>
 
-    <!-- PLAN PRO -->
     <div class="plan-card plan-pro">
       <h3>PRO</h3>
       <div class="precio">$50.000</div>
@@ -532,7 +518,6 @@
       </ul>
     </div>
 
-    <!-- PLAN ÉLITE -->
     <div class="plan-card plan-elite">
       <h3>ÉLITE</h3>
       <div class="precio">$100.000</div>
