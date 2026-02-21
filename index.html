@@ -183,7 +183,7 @@
       border: 2px solid var(--rojo);
     }
 
-    /* NUEVA SECCIÓN DE MARCAS (COLLAGE CON UNA SOLA IMAGEN) */
+    /* SECCIÓN DE MARCAS (SIN SOMBRA) */
     .marcas-section {
       max-width: 1200px;
       margin: 3rem auto;
@@ -215,7 +215,7 @@
       padding: 1rem;
       background: #f9f9f9;
       border-radius: 20px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border: 2px solid #ddd; /* Borde simple, sin sombra */
     }
 
     .marcas-collage img {
@@ -347,6 +347,60 @@
       display: block;
     }
 
+    /* PREÁMBULO PARA LOS PLANES */
+    .preambulo-planes {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, #fff8e7, #fff);
+      border-radius: 30px;
+      border: 2px dashed var(--rojo);
+    }
+
+    .preambulo-planes h3 {
+      color: var(--rojo);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .preambulo-planes p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #444;
+      margin: 1rem 0;
+    }
+
+    .preambulo-planes .destacado {
+      background: var(--amarillo);
+      color: var(--rojo);
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      display: inline-block;
+      font-weight: bold;
+      margin: 1rem 0;
+    }
+
+    .preambulo-planes .comparacion {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .comparacion-item {
+      background: white;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      font-size: 1.3rem;
+    }
+
+    .comparacion-item span {
+      font-weight: bold;
+      color: var(--rojo);
+    }
+
     .planes-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -407,7 +461,6 @@
       margin-top: 1rem;
     }
 
-    /* BOTÓN DIRECTO A WHATSAPP */
     .whatsapp-directo {
       background: #25D366;
       color: white;
@@ -452,6 +505,10 @@
       .telefonos-destacados {
         flex-direction: column;
         align-items: center;
+      }
+      .comparacion {
+        flex-direction: column;
+        gap: 1rem;
       }
     }
   </style>
@@ -501,7 +558,6 @@
   </section>
 </main>
 
-<!-- SECCIÓN DE MARCAS (COLLAGE CON UNA SOLA IMAGEN) -->
 <section class="marcas-section">
   <h2>Trabajamos con <span>estas y otras marcas</span></h2>
   <div class="marcas-collage">
@@ -562,6 +618,29 @@
 </section>
 
 <section id="planes-page">
+  <!-- PREÁMBULO (NUEVO) -->
+  <div class="preambulo-planes">
+    <h3>🌟 La Revolución de la Tarjeta Digital</h3>
+    <p>En la era digital, su presencia en línea es tan importante como su taller. Una tarjeta digital no es solo un reemplazo de la tarjeta física, es <strong>su puerta de entrada a un mundo de oportunidades</strong>.</p>
+    
+    <div class="comparacion">
+      <div class="comparacion-item">
+        📇 Tarjeta física: <span>$80.000</span> (1000 unidades)
+      </div>
+      <div class="comparacion-item">
+        📱 Tarjeta digital: <span>¡desde $25.000!</span>
+      </div>
+    </div>
+
+    <p><strong>Con derechos reservados y licencia por 1 año</strong>, su tarjeta digital está protegida y siempre actualizada. A diferencia de las redes sociales, donde su información puede perderse o ser manipulada, <strong>su tarjeta digital es suya, para siempre</strong>.</p>
+
+    <div class="destacado">
+      🤝 Una comunidad que se ayuda mutuamente
+    </div>
+
+    <p>Al adquirir su tarjeta, no solo obtiene presencia digital. <strong>Pasa a formar parte de una red de emprendedores</strong> que se benefician entre sí. Cada recomendación, cada nuevo miembro, fortalece a todos. Porque <strong>juntos somos más fuertes, y organizados, invencibles</strong>.</p>
+  </div>
+
   <h2 style="color: var(--rojo); text-align: center;">📊 PLANES TARJETA DIGITAL</h2>
   <div class="planes-grid">
     <div class="plan-card plan-basico">
@@ -603,7 +682,6 @@
     </div>
   </div>
   
-  <!-- BOTÓN DIRECTO A SU WHATSAPP -->
   <div style="text-align: center; margin: 3rem 0 1rem;">
     <a href="https://wa.me/584227159158?text=Hola,%20vi%20la%20tarjeta%20de%20Repuestos%20Castillo%20y%20quiero%20información%20sobre%20las%20tarjetas%20digitales" 
        class="whatsapp-directo" 
@@ -623,7 +701,26 @@
 <script>
   const menuBtn = document.getElementById('menuBtn');
   const menu = document.getElementById('menu');
-  menuBtn.addEventListener('click', () => menu.classList.toggle('mostrar'));
+
+  // Abrir/cerrar menú al hacer clic en el botón
+  menuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    menu.classList.toggle('mostrar');
+  });
+
+  // Cerrar menú al hacer clic en cualquier enlace
+  document.querySelectorAll('.menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('mostrar');
+    });
+  });
+
+  // Cerrar menú al hacer clic fuera
+  document.addEventListener('click', (event) => {
+    if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
+      menu.classList.remove('mostrar');
+    }
+  });
 </script>
 
 </body>
